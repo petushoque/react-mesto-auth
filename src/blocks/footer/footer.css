@@ -1,0 +1,15 @@
+.footer {
+    width: 100%;
+    max-width: 1280px;
+    box-sizing: border-box;
+    padding: 67px 200px 60px 200px;
+    margin: 0;
+}
+
+/*стили для маленьких мониторов и мобильных устройств*/
+
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 48px 19px 36px 19px;
+    }
+}

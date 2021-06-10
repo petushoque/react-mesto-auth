@@ -1,0 +1,27 @@
+.profile__status {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 16px 0 0 30px; /*отодвигаем подпись от аватара на 30 пикселей и от верхней строчки на 16*/
+    margin: 0;
+    justify-self: start;
+    align-self: start;
+    grid-area: status;
+    text-overflow: ellipsis;
+    max-width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/*стили для маленьких мониторов и мобильных устройств*/
+
+@media screen and (max-width: 1060px) {
+    .profile__status {
+        font-size: 14px;
+        line-height: 17px;
+        padding: 14px 0 36px 0; /*отодвигаемся от имени на 14 пикселей и двигаем кнопку на 36 пикселей*/
+        margin: 0 auto;
+        max-width: 280px;
+    }
+}

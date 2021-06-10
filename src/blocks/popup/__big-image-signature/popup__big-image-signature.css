@@ -1,0 +1,10 @@
+.popup__big-image-signature {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+    position: absolute;
+    left: 0;
+    bottom: -22px;
+}

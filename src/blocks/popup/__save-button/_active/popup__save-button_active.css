@@ -1,0 +1,10 @@
+.popup__save-button_active {
+    background-color: #000000;
+    color: #FFFFFF;
+    opacity: 1;
+    border: none;
+}
+
+.popup__save-button_active:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

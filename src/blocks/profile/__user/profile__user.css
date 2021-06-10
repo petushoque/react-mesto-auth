@@ -1,0 +1,17 @@
+.profile__user {
+    margin: 0;
+    grid-area: user;
+    align-self: end;
+    justify-self: start;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+/*стили для маленьких мониторов и мобильных устройств*/
+
+@media screen and (max-width: 1060px) {
+    .profile__user {
+        margin: 0 auto;
+    }
+}

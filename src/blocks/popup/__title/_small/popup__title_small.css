@@ -1,0 +1,11 @@
+.popup__title_small {
+    padding: 0 0 20px 0;
+}
+
+/*стили для маленьких мониторов и мобильных устройств*/
+
+@media screen and (max-width: 1060px) {
+    .popup__title_small {
+        padding: 0 0 20px 0;
+    }
+}

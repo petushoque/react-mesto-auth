@@ -1,0 +1,33 @@
+.profile__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    text-align: center;
+    padding: 0 0 0 30px; /*на 30 пикселей отодвигаемся от аватара*/
+    margin: 0;
+    grid-area: name;
+    align-self: end;
+    justify-self: start;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 316px;
+}
+
+/*стили для маленьких мониторов и мобильных устройств*/
+
+@media screen and (max-width: 1060px) {
+    .profile__name {
+        font-size: 27px;
+        line-height: 33px;
+        padding: 26px 0 0 0; /*на 26 пикселей отодвигаемся от аватара*/
+        max-width: 260px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile__name {
+        max-width: 215px;
+    }
+}

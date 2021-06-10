@@ -1,0 +1,7 @@
+.popup_active {
+    display: flex;
+/* Механизм плавного открытия попапа */
+    height: auto;
+    opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+}

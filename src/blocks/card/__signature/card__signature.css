@@ -1,0 +1,15 @@
+.card__signature {
+    color: #000000;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    padding: 0;
+    margin: 0;
+/*переполнение блока с появляющимся многоточием в конце*/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+/*подпись к фото по ширине должна занимать весь блок, оставляя место только для кнпоки "like"*/
+    max-width: calc(100% - 21px);
+}
