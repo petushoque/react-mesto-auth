@@ -1,0 +1,15 @@
+.authorization__notice {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 15px 0 0 0;
+}
+
+@media screen and (max-width: 1060px) {
+    .authorization__notice {
+        margin: 20px 0 0 0;
+    }
+}

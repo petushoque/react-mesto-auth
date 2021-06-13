@@ -52,3 +52,4 @@
 @import url(./blocks/authorization/__title/authorization__title.css);
 @import url(./blocks/authorization/__input/authorization__input.css);
 @import url(./blocks/authorization/__submit-button/authorization__submit-button.css);
+@import url(./blocks/authorization/__notice/authorization__notice.css);
