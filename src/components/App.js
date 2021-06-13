@@ -11,6 +11,8 @@ import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 
+import Login from './Login';
+
 import api from '../utils/api'
 import CurrentUserContext from '../contexts/CurrentUserContext'
 
@@ -144,6 +146,9 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>   
 
         <Header />
+
+        <Login />
+
         <Main 
           cards={cards}
           onEditProfile={handleEditProfileClick} 
