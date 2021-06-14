@@ -176,10 +176,13 @@ function App (props) {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>   
         <Header />
-        <Switch>
-        <Login />
-        <Register />
-        <ProtectedRoute exact path='./'>
+          <Switch>
+        <ProtectedRoute 
+          exact path='/'
+          loggedIn={loggedIn}
+          component={Main}>
+        </ProtectedRoute>
+
         <Main 
           cards={cards}
           onEditProfile={handleEditProfileClick} 
@@ -188,7 +191,7 @@ function App (props) {
           onCardClick={handleCardClick}
           handleCardDelete={handleCardDelete}
           hanldeCardLike={handleCardLike}/>
-        <Footer />
+        
 
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen} 
@@ -211,8 +214,23 @@ function App (props) {
         <ImagePopup 
           card={selectedCard} 
           onClose={closeAllPopups}/>
-        </ProtectedRoute>
+        
+
+        <Route path='/login'>
+          <Login />
+        </Route>
+
+        <Route path='/register'>
+          <Register />
+        </Route>
+
+        <Route>
+          {loggedIn ? <Redirect to='/'/> : <Redirect to='/login'/>}
+        </Route>
+          
         </Switch>
+
+        <Footer />
 
       </CurrentUserContext.Provider>
     </div>
