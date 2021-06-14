@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 import Header from './Header';
 import Main from './Main';
@@ -14,12 +15,40 @@ import AddPlacePopup from './AddPlacePopup'
 import Login from './Login';
 import Register from './Register';
 
+import * as auth from '../auth'
 import api from '../utils/api'
 import CurrentUserContext from '../contexts/CurrentUserContext'
 
-function App() {
+function App (props) {
 
   const [currentUser, setCurrentUser] = useState('')
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [userData, setUserData] = useState(null)
+
+  useEffect(() => {
+    tokenCheck()
+  }, [])
+
+  function tokenCheck () {
+    if (localStorage.getItem('jwt')) {
+      let jwt = localStorage.getItem('jwt')
+      auth.checkToken(jwt).then((res) => {
+        if (res) {
+          let userData = {
+            username: res.username,
+            email: res.email,
+          }
+          setLoggedIn(true)
+          setUserData(userData)
+          props.history.push('./')
+        }
+      })
+    }
+  }
+
+  function handleLogin () {
+    setLoggedIn(true)
+  }
 
   useEffect(() => {
     api.getUserInfo()
@@ -189,7 +218,7 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App)
 /*
 <section class="popup popup_type_delete-post">
 <div class="popup__container">
