@@ -12,6 +12,7 @@ import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 
+import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import Register from './Register';
 
@@ -174,13 +175,11 @@ function App (props) {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>   
-
         <Header />
-
+        <Switch>
         <Login />
-
         <Register />
-
+        <ProtectedRoute exact path='./'>
         <Main 
           cards={cards}
           onEditProfile={handleEditProfileClick} 
@@ -212,6 +211,8 @@ function App (props) {
         <ImagePopup 
           card={selectedCard} 
           onClose={closeAllPopups}/>
+        </ProtectedRoute>
+        </Switch>
 
       </CurrentUserContext.Provider>
     </div>
