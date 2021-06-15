@@ -27,6 +27,7 @@ function App (props) {
   const [userData, setUserData] = useState(null)
   const history = useHistory()
 
+  /*
   useEffect(() => {
     tokenCheck()
   }, [])
@@ -47,10 +48,7 @@ function App (props) {
       })
     }
   }
-
-  function handleLogin () {
-    setLoggedIn(true)
-  }
+  */
 
   useEffect(() => {
     api.getUserInfo()
@@ -87,6 +85,14 @@ function App (props) {
         console.log(err);
     });    
   }, [])
+
+  function handleLogin () {
+    setLoggedIn(true)
+  }
+
+  function handleRegister (email, password) {
+    auth.register(email, password)
+  }
 
   function handleEditAvatarClick () {
     setIsEditAvatarPopupOpen(true)
@@ -194,11 +200,11 @@ function App (props) {
      
 
         <Route path='/login'>
-          <Login />
+          <Login onLogin={handleLogin}/>
         </Route>
 
         <Route path='/register'>
-          <Register />
+          <Register onRegister={handleRegister} />
         </Route>
 
         <Route>

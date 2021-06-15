@@ -6,17 +6,6 @@ export default function Login (props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleInput (e) {
-        switch (e.target.id) {
-            case 'login-password':
-                setPassword(e.target.value)
-                break;
-            case 'login-email':
-                setEmail(e.target.value)
-                break;
-            }
-    }
-
     return (
             <form className='authorization'>
                 <h2 className='authorization__title'>Вход</h2>
@@ -26,7 +15,7 @@ export default function Login (props) {
                     placeholder='Email'
                     required
                     type='email' 
-                    onInput={e => handleInput(e)}  
+                    onInput={e => setEmail(e.target.value)}  
                 />
                 <input 
                     className='authorization__input'
@@ -34,7 +23,7 @@ export default function Login (props) {
                     placeholder='Пароль'
                     required
                     type='password'   
-                    onInput={e => handleInput(e)}
+                    onInput={e => setPassword(e.target.value)}
                 />
                 <button
                     className='authorization__submit-button authorization__submit-button_login' 

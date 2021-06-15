@@ -7,19 +7,14 @@ export default function Register (props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleInput (e) {
-        switch (e.target.id) {
-            case 'registration-password':
-                setPassword(e.target.value)
-                break;
-            case 'registration-email':
-                setEmail(e.target.value)
-                break;
-            }
+    function handleSubmit (e) {
+        e.preventDefault();
+        props.onRegister(email, password)
     }
 
     return (
-            <form className='authorization'>
+            <form className='authorization'
+            onSubmit={handleSubmit}>
                 <h2 className='authorization__title'>Регистрация</h2>
                 <input 
                     className='authorization__input'
@@ -27,7 +22,7 @@ export default function Register (props) {
                     placeholder='Email'
                     required
                     type='email'   
-                    onInput={e => handleInput(e)}
+                    onInput={e => setEmail(e.target.value)}
                 />
                 <input 
                     className='authorization__input'
@@ -35,7 +30,7 @@ export default function Register (props) {
                     placeholder='Пароль'
                     required
                     type='password'   
-                    onInput={e => handleInput(e)}
+                    onInput={e => setPassword(e.target.value)}
                 />
                 <button
                     className='authorization__submit-button authorization__submit-button_login' 
