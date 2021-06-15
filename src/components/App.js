@@ -91,7 +91,9 @@ function App (props) {
   }
 
   function handleRegister (email, password) {
-    auth.register(email, password)
+    return auth
+    .register(email, password)
+    .then(() => history.push('/login'))
   }
 
   function handleEditAvatarClick () {
@@ -183,7 +185,7 @@ function App (props) {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>   
         <Header />
-          <Switch>
+        <Switch>
         <ProtectedRoute 
           exact path='/'
           loggedIn={loggedIn}
@@ -196,47 +198,38 @@ function App (props) {
           handleCardDelete={handleCardDelete}
           hanldeCardLike={handleCardLike}>
         </ProtectedRoute>
-
-     
-
         <Route path='/login'>
           <Login onLogin={handleLogin}/>
         </Route>
-
         <Route path='/register'>
           <Register onRegister={handleRegister} />
         </Route>
-
         <Route>
           {loggedIn ? <Redirect to='/'/> : <Redirect to='/login'/>}
         </Route>
-          
         </Switch>
-
         <Footer />
-
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen} 
           onClose={closeAllPopups}
           onAddPlace={handleAddPlace}/>
-
         <EditProfilePopup 
           isOpen={isEditProfilePopupOpen} 
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}/>
-
         <EditAvatarPopup 
           isOpen={isEditAvatarPopupOpen} 
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateUser}/>
-
-        <PopupWithForm name='delete-post' title='Вы уверены?' isOpen={isDeletePostPopupOpen} onClose={closeAllPopups}>
-        </PopupWithForm> 
-             
+        <PopupWithForm 
+          name='delete-post' 
+          title='Вы уверены?' 
+          isOpen={isDeletePostPopupOpen} 
+          onClose={closeAllPopups}>
+        </PopupWithForm>             
         <ImagePopup 
           card={selectedCard} 
           onClose={closeAllPopups}/>
-
       </CurrentUserContext.Provider>
     </div>
   );
