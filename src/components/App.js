@@ -180,18 +180,33 @@ function App (props) {
         <ProtectedRoute 
           exact path='/'
           loggedIn={loggedIn}
-          component={Main}>
-        </ProtectedRoute>
-
-        <Main 
+          component={Main}
           cards={cards}
           onEditProfile={handleEditProfileClick} 
           onAddPlace={handleAddPlaceClick} 
           onEditAvatar={handleEditAvatarClick} 
           onCardClick={handleCardClick}
           handleCardDelete={handleCardDelete}
-          hanldeCardLike={handleCardLike}/>
-        
+          hanldeCardLike={handleCardLike}>
+        </ProtectedRoute>
+
+     
+
+        <Route path='/login'>
+          <Login />
+        </Route>
+
+        <Route path='/register'>
+          <Register />
+        </Route>
+
+        <Route>
+          {loggedIn ? <Redirect to='/'/> : <Redirect to='/login'/>}
+        </Route>
+          
+        </Switch>
+
+        <Footer />
 
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen} 
@@ -214,23 +229,6 @@ function App (props) {
         <ImagePopup 
           card={selectedCard} 
           onClose={closeAllPopups}/>
-        
-
-        <Route path='/login'>
-          <Login />
-        </Route>
-
-        <Route path='/register'>
-          <Register />
-        </Route>
-
-        <Route>
-          {loggedIn ? <Redirect to='/'/> : <Redirect to='/login'/>}
-        </Route>
-          
-        </Switch>
-
-        <Footer />
 
       </CurrentUserContext.Provider>
     </div>
@@ -248,4 +246,13 @@ export default withRouter(App)
   <button class="popup__close-button popup__close-button_type_delete-post" type="button"></button>
 </div>
 </section>
+
+        <Main 
+          cards={cards}
+          onEditProfile={handleEditProfileClick} 
+          onAddPlace={handleAddPlaceClick} 
+          onEditAvatar={handleEditAvatarClick} 
+          onCardClick={handleCardClick}
+          handleCardDelete={handleCardDelete}
+          hanldeCardLike={handleCardLike}/>  
 */
