@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter, useHistory } from 'react-router-dom';
 
 import Header from './Header';
 import Main from './Main';
@@ -25,6 +25,7 @@ function App (props) {
   const [currentUser, setCurrentUser] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
   const [userData, setUserData] = useState(null)
+  const history = useHistory()
 
   useEffect(() => {
     tokenCheck()
@@ -235,7 +236,7 @@ function App (props) {
   );
 }
 
-export default withRouter(App)
+export default App
 /*
 <section class="popup popup_type_delete-post">
 <div class="popup__container">
