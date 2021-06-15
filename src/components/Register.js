@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Register (props) {
     return (
@@ -24,7 +25,7 @@ export default function Register (props) {
                         Зарегистрироваться
                 </button>
                 <p className='authorization__notice'>
-                    Уже зарегистрированы? Войти
+                    Уже зарегистрированы? <Link className='authorization__link' to='/login'>Войти</Link>
                 </p>
             </form>
     )

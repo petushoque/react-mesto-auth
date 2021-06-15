@@ -41,7 +41,7 @@ function App (props) {
           }
           setLoggedIn(true)
           setUserData(userData)
-          props.history.push('./')
+          props.history.push('/')
         }
       })
     }
