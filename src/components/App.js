@@ -47,7 +47,6 @@ function App (props) {
       .then((res) => {
         if (res) {
           setLoggedIn(true)
-          props.history.push('/')
         }
       })
   }
@@ -94,7 +93,8 @@ function App (props) {
     .authorize(email, password)
     .then((res) => {
       if (res) {
-        localStorage.setItem('jwt', res.jwt)
+        localStorage.setItem('jwt', res.token)
+        localStorage.setItem('email', email)
         setLoggedIn(true)
       }
     })
@@ -104,6 +104,11 @@ function App (props) {
     return auth
     .register(email, password)
     .then(() => history.push('/login'))
+  }
+
+  function handleLogout () {
+    setLoggedIn(false)
+    localStorage.setItem('jwt', null)
   }
 
   function handleEditAvatarClick () {
@@ -194,7 +199,9 @@ function App (props) {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>   
-        <Header />
+        <Header 
+          isLoggedIn={loggedIn}
+          onLogout={handleLogout}/>
         <Switch>
         <ProtectedRoute 
           exact path='/'
@@ -246,23 +253,3 @@ function App (props) {
 }
 
 export default App
-/*
-<section class="popup popup_type_delete-post">
-<div class="popup__container">
-  <h2 class="popup__title popup__title_small">Вы уверены?</h2>
-  <form name="deletepost">
-    <button class="popup__save-button popup__save-button_active" type="submit">Да</button>
-  </form>
-  <button class="popup__close-button popup__close-button_type_delete-post" type="button"></button>
-</div>
-</section>
-
-        <Main 
-          cards={cards}
-          onEditProfile={handleEditProfileClick} 
-          onAddPlace={handleAddPlaceClick} 
-          onEditAvatar={handleEditAvatarClick} 
-          onCardClick={handleCardClick}
-          handleCardDelete={handleCardDelete}
-          hanldeCardLike={handleCardLike}/>  
-*/
