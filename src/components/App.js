@@ -24,31 +24,34 @@ function App (props) {
 
   const [currentUser, setCurrentUser] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
-  const [userData, setUserData] = useState(null)
   const history = useHistory()
 
-  /*
+  
   useEffect(() => {
     tokenCheck()
   }, [])
 
+  useEffect(() => {
+    if (loggedIn) {
+      history.push('/')
+    }
+  }, [loggedIn])
+
   function tokenCheck () {
-    if (localStorage.getItem('jwt')) {
-      let jwt = localStorage.getItem('jwt')
-      auth.checkToken(jwt).then((res) => {
+    const jwt = localStorage.getItem('jwt')
+    if (!jwt) {
+      return
+    }
+    auth
+      .checkToken(jwt)
+      .then((res) => {
         if (res) {
-          let userData = {
-            username: res.username,
-            email: res.email,
-          }
           setLoggedIn(true)
-          setUserData(userData)
           props.history.push('/')
         }
       })
-    }
   }
-  */
+  
 
   useEffect(() => {
     api.getUserInfo()
@@ -86,8 +89,15 @@ function App (props) {
     });    
   }, [])
 
-  function handleLogin () {
-    setLoggedIn(true)
+  function handleLogin (email, password) {
+    return auth
+    .authorize(email, password)
+    .then((res) => {
+      if (res) {
+        localStorage.setItem('jwt', res.jwt)
+        setLoggedIn(true)
+      }
+    })
   }
 
   function handleRegister (email, password) {
