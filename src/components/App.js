@@ -11,6 +11,7 @@ import ImagePopup from './ImagePopup'
 import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
+import InfoTooltip from './InfoTooltip';
 
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
@@ -66,7 +67,9 @@ function App () {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isDeletePostPopupOpen, setIsDeletePostPopup] = useState(false)
+  const [isLoginStatusPopupOpen, setIsLoginStatusPopupOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState(null)
+  const [isSuccessfulRegistration, setIsSuccessfulRegistration] = useState(false)
   const [cards, setCards] = useState([])
 
   useEffect(() => {        
@@ -103,7 +106,18 @@ function App () {
   function handleRegister (email, password) {
     return auth
     .register(email, password)
-    .then(() => history.push('/login'))
+    .then((res) => {
+      if(res) {
+        setIsSuccessfulRegistration(true)
+        setIsLoginStatusPopupOpen(true)
+        history.push('/login')
+      }
+      else {
+        setIsSuccessfulRegistration(false)
+        setIsLoginStatusPopupOpen(true)
+      }
+      }
+    )
   }
 
   function handleLogout () {
@@ -126,6 +140,7 @@ function App () {
     setIsEditProfilePopupOpen(false);
     setIsEditAvatarPopupOpen(false)
     setIsDeletePostPopup(false)
+    setIsLoginStatusPopupOpen(false)
     setSelectedCard(null)
   }
 
@@ -247,6 +262,10 @@ function App () {
         <ImagePopup 
           card={selectedCard} 
           onClose={closeAllPopups}/>
+        <InfoTooltip 
+          isOpen={isLoginStatusPopupOpen} 
+          onClose={closeAllPopups}
+          isSuccess={isSuccessfulRegistration}/>
       </CurrentUserContext.Provider>
     </div>
   );
