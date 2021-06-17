@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Redirect, Route, Switch, withRouter, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 
 import Header from './Header';
 import Main from './Main';
@@ -20,7 +20,7 @@ import * as auth from '../auth'
 import api from '../utils/api'
 import CurrentUserContext from '../contexts/CurrentUserContext'
 
-function App (props) {
+function App () {
 
   const [currentUser, setCurrentUser] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
