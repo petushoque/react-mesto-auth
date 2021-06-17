@@ -1,7 +1,7 @@
 .header__auth-item {
     cursor: pointer;
     margin: 0;
-    padding: 0;
+    padding: 6px 0 0 0;
     font-style: normal;
     font-size: 18px;
     line-height: 22px;

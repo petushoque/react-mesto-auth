@@ -3,3 +3,9 @@
     flex-direction: row;
     gap: 24px;
 }
+
+@media screen and (max-width: 990px) {
+    .header__auth {
+        padding: 0 30px 0 0;
+    }
+}
