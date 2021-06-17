@@ -1,4 +1,9 @@
-.header__auth-item_logout {
+.header__auth-item_logout {    
+    cursor: pointer;
     font-weight: normal;
     color: #A9A9A9;
+}
+
+.header__auth-item_logout:hover {
+    opacity: 0.6;
 }

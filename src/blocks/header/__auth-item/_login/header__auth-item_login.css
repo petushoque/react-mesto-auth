@@ -1,4 +1,9 @@
-.header__auth-item_login {
+.header__auth-item_login {    
+    cursor: pointer;
     text-decoration: none;
     color: white;
+}
+
+.header__auth-item_login:hover {
+    opacity: 0.6;
 }
