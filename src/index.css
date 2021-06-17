@@ -9,6 +9,7 @@
 @import url(./blocks/header/__auth-item/header__auth-item.css);
 @import url(./blocks/header/__auth-item/_email/header__auth-item_email.css);
 @import url(./blocks/header/__auth-item/_logout/header__auth-item_logout.css);
+@import url(./blocks/header/__auth-item/_login/header__auth-item_login.css);
 
 @import url(./blocks/main/main.css);
 
