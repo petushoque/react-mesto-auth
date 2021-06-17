@@ -110,7 +110,7 @@ function App () {
       if(res) {
         setIsSuccessfulRegistration(true)
         setIsLoginStatusPopupOpen(true)
-        history.push('/login')
+        history.push('/sign-in')
       }
       else {
         setIsSuccessfulRegistration(false)
@@ -230,14 +230,14 @@ function App () {
           handleCardDelete={handleCardDelete}
           hanldeCardLike={handleCardLike}>
         </ProtectedRoute>
-        <Route path='/login'>
+        <Route path='/sign-in'>
           <Login onLogin={handleLogin}/>
         </Route>
-        <Route path='/register'>
+        <Route path='/sign-up'>
           <Register onRegister={handleRegister} />
         </Route>
         <Route>
-          {loggedIn ? <Redirect to='/'/> : <Redirect to='/login'/>}
+          {loggedIn ? <Redirect to='/'/> : <Redirect to='sign-in'/>}
         </Route>
         </Switch>
         <Footer />
