@@ -9,7 +9,7 @@ function PopupWithForm (props) {
         <section className={isOpen ? `popup popup_type_${popupName} popup_active` : `popup popup_type_${popupName}`}>
             <div className="popup__container">
                 <h2 className="popup__title">{title}</h2>
-                <form name={popupName} noValidate onSubmit={props.onSubmit}>
+                <form name={popupName} onSubmit={props.onSubmit}>
                     {props.children}
                 <button className="popup__save-button popup__save-button_active" type="submit">Сохранить</button>
                 </form>                

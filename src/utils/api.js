@@ -1,5 +1,6 @@
 class Api {
     constructor(token, groupId){
+        this.baseUrl = 'https://mesto.nomoreparties.co/v1'
         this._token = token;
         this._groupId = groupId
     }
@@ -10,7 +11,7 @@ class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
       } 
     getCards(){
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/cards`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/cards`, {
             headers: {
             authorization: this._token
             }
@@ -18,7 +19,7 @@ class Api {
         .then(this._checkResponse)
     }
     getUserInfo(){
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/users/me`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/users/me`, {
             headers: {
             authorization: this._token
             }
@@ -26,7 +27,7 @@ class Api {
         .then(this._checkResponse)
     }
     patchProfileAvatar(picture){
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/users/me/avatar`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/users/me/avatar`, {
         method: 'PATCH',
         headers: {
         authorization: this._token,
@@ -39,7 +40,7 @@ class Api {
         .then(this._checkResponse)
     }
     patchProfileInfo(username, status){
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/users/me`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/users/me`, {
         method: 'PATCH',
         headers: {
         authorization: this._token,
@@ -53,7 +54,7 @@ class Api {
         .then(this._checkResponse)
     }
     postNewCard(text, url) {
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/cards `, {
+        return fetch(`${this.baseUrl}/${this._groupId}/cards `, {
         method: 'POST',
         headers: {
         authorization: this._token,
@@ -67,7 +68,7 @@ class Api {
         .then(this._checkResponse)
     }
     deleteCard(id) {        
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/cards/${id}/`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/cards/${id}/`, {
         method: 'DELETE',
         headers: {
         authorization: this._token
@@ -76,7 +77,7 @@ class Api {
         .then(this._checkResponse)
     }
     putLikePost(id) {
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/cards/likes/${id}`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/cards/likes/${id}`, {
         method: 'PUT',
         headers: {
         authorization: this._token
@@ -85,7 +86,7 @@ class Api {
         .then(this._checkResponse)
     }
     deleteLikePost(id) {
-        return fetch(`https://mesto.nomoreparties.co/v1/${this._groupId}/cards/likes/${id}`, {
+        return fetch(`${this.baseUrl}/${this._groupId}/cards/likes/${id}`, {
         method: 'DELETE',
         headers: {
         authorization: this._token
