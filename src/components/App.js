@@ -166,6 +166,9 @@ function App () {
       setCurrentUser(res);
       closeAllPopups()
     })
+    .catch((err) => {
+      console.log(err);
+    });
     
   }
 
@@ -175,7 +178,9 @@ function App () {
       setCurrentUser(res);
       closeAllPopups()
     })
-    
+    .catch((err) => {
+      console.log(err);
+    });    
   }
 
   function handleAddPlace (description, link) {
@@ -191,7 +196,9 @@ function App () {
       setCards([data, ...cards]);
       closeAllPopups()
     })
-    
+    .catch((err) => {
+      console.log(err);
+    });    
   }
 
   function handleCardDelete(card) {
