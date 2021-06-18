@@ -154,7 +154,7 @@ function App () {
     closeAllPopups()
   }
 
-  function handleUpdateUser (avatarLink) {
+  function handleUpdateAvatar (avatarLink) {
     api.patchProfileAvatar(avatarLink)
     .then((res) => setCurrentUser(res))
     closeAllPopups()
@@ -252,7 +252,7 @@ function App () {
         <EditAvatarPopup 
           isOpen={isEditAvatarPopupOpen} 
           onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateUser}/>
+          onUpdateAvatar={handleUpdateAvatar}/>
         <PopupWithForm 
           name='delete-post' 
           title='Вы уверены?' 
