@@ -17,7 +17,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import Register from './Register';
 
-import * as auth from '../auth'
+import * as auth from '../utils/auth'
 import api from '../utils/api'
 import CurrentUserContext from '../contexts/CurrentUserContext'
 
@@ -123,14 +123,11 @@ function App () {
         setIsSuccessfulRegistration(true)
         setIsLoginStatusPopupOpen(true)
         history.push('/sign-in')
-      }
-      else {
-        setIsSuccessfulRegistration(false)
-        setIsLoginStatusPopupOpen(true)
-      }
-      }
+      }}
     )
     .catch((err) => {
+      setIsSuccessfulRegistration(false)
+      setIsLoginStatusPopupOpen(true)
       console.log(err);
     })
   }
