@@ -8,6 +8,8 @@ export default function AddPlacePopup (props) {
     function handleSubmit(e) {
         e.preventDefault();
         props.onAddPlace(description, link);
+        setDescription('');
+        setLink('')
     }
 
     return (
@@ -18,7 +20,8 @@ export default function AddPlacePopup (props) {
             onClose={props.onClose}
             onSubmit={handleSubmit}>
             <input 
-                onInput={(e) => setDescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
+                value={description || ''}
                 className="popup__input popup__input_textarea_signature" 
                 id="input-signature" 
                 name="signature" 
@@ -29,7 +32,8 @@ export default function AddPlacePopup (props) {
                 maxLength="30"/>
             <span className="popup__input-error input-signature-error"></span>
             <input 
-                onInput={(e) => setLink(e.target.value)}
+                onChange={(e) => setLink(e.target.value)}
+                value={link || ''}
                 className="popup__input popup__input_textarea_picture" 
                 id="input-picture" 
                 name="picture" 
