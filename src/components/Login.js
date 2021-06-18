@@ -20,7 +20,8 @@ export default function Login (props) {
                     placeholder='Email'
                     required
                     type='email' 
-                    onInput={e => setEmail(e.target.value)}  
+                    onChange={e => setEmail(e.target.value)}
+                    value={email || ''}  
                 />
                 <input 
                     className='authorization__input'
@@ -28,7 +29,8 @@ export default function Login (props) {
                     placeholder='Пароль'
                     required
                     type='password'   
-                    onInput={e => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
+                    value={password || ''}
                 />
                 <button
                     className='authorization__submit-button authorization__submit-button_login' 
