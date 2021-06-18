@@ -23,7 +23,13 @@ import CurrentUserContext from '../contexts/CurrentUserContext'
 
 function App () {
 
-  const [currentUser, setCurrentUser] = useState('')
+  const [currentUser, setCurrentUser] = useState({
+    about: '',
+    avatar: '',
+    cohort: '',
+    name: '',
+    _id: ','
+  })
   const [loggedIn, setLoggedIn] = useState(false)
   const history = useHistory()
 
@@ -49,6 +55,9 @@ function App () {
         if (res) {
           setLoggedIn(true)
         }
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
   
@@ -101,6 +110,9 @@ function App () {
         setLoggedIn(true)
       }
     })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   function handleRegister (email, password) {
@@ -118,6 +130,9 @@ function App () {
       }
       }
     )
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   function handleLogout () {
@@ -150,14 +165,20 @@ function App () {
 
   function handleUpdateUser (name, about) {
     api.patchProfileInfo(name, about)
-    .then((res) => setCurrentUser(res))
-    closeAllPopups()
+    .then((res) => {
+      setCurrentUser(res);
+      closeAllPopups()
+    })
+    
   }
 
   function handleUpdateAvatar (avatarLink) {
     api.patchProfileAvatar(avatarLink)
-    .then((res) => setCurrentUser(res))
-    closeAllPopups()
+    .then((res) => {
+      setCurrentUser(res);
+      closeAllPopups()
+    })
+    
   }
 
   function handleAddPlace (description, link) {
@@ -170,15 +191,20 @@ function App () {
         owner: newCard.owner._id,
         likes: newCard.likes,
       }
-      setCards([data, ...cards])})
-    closeAllPopups()
+      setCards([data, ...cards]);
+      closeAllPopups()
+    })
+    
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card.id)
-    .then(
-        setCards((cards) => cards.filter((c) => {return c.id !== card.id}))
-    )
+    .then(() => {
+      setCards((cards) => cards.filter((c) => {return c.id !== card.id}))
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   function handleCardLike(card) {
@@ -195,6 +221,9 @@ function App () {
                     }
                 setCards((cards) => cards.map((c) => c.id === card.id ? data : c))
         })
+        .catch((err) => {
+          console.log(err);
+        })
     }
     else {
         api.putLikePost(card.id)
@@ -207,6 +236,9 @@ function App () {
                 likes: newCard.likes,
             }
             setCards((cards) => cards.map((c) => c.id === card.id ? data : c))
+        })
+        .catch((err) => {
+          console.log(err);
         })    
     }
   }
